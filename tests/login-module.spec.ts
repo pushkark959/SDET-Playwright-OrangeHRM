@@ -1,3 +1,4 @@
+import process from 'process';
 import LoginModuleData from '../data/login-module-data.json';
 import { test } from '../fixtures/pom-fixture';
 import { expect } from '@playwright/test';

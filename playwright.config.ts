@@ -18,6 +18,7 @@ dotenv.config({
  */
 export default defineConfig({
   testDir: './tests',
+  globalSetup: './tests/global.setup.ts',
   /* Run tests in files in parallel */
   fullyParallel: false,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -46,12 +47,7 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'Setup',
-      testMatch: 'global.setup.ts',
-    },  
-    {
       name: 'chromium',
-      dependencies: ['Setup'],
       use: { ...devices['Desktop Chrome'],
         storageState: 'auth/./auth.json'
       },
@@ -59,7 +55,6 @@ export default defineConfig({
 
     {
       name: 'firefox',
-      dependencies: ['Setup'],
       use: { ...devices['Desktop Firefox'],
        storageState: 'auth/./auth.json'
        },
@@ -67,7 +62,6 @@ export default defineConfig({
 
     {
       name: 'webkit',
-      dependencies: ['Setup'],
       use: { ...devices['Desktop Safari'],
         storageState: 'auth/./auth.json'
        },

@@ -3,14 +3,18 @@ import { Locator, Page } from "@playwright/test";
 
 export class LeftNavigationPage {
     readonly page:Page;
-    readonly pmilink:Locator;
+    readonly pimLink:Locator;
 
     constructor(page:Page){
         this.page=page;
-        this.pmilink = page.getByRole('link', { name: 'PIM' });
+       this.pimLink = page.getByRole('link', { name: 'PIM' });
     }
 
-    async clickPmiLink(){
-        await this.pmilink.click();
-    } 
+    async clickPimLink(){
+        await this.pimLink.click();
+    }
+
+    async openPimModule() {
+        await this.clickPimLink();
+    }
 }
