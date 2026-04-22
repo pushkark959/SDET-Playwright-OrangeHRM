@@ -1,6 +1,6 @@
 import { Locator, Page } from "@playwright/test";
 
-class UserPage {
+export class UserPage {
     readonly page:Page;
     readonly userMenuButton:Locator;
     readonly LogoutButton:Locator | undefined;
