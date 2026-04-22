@@ -18,6 +18,7 @@ dotenv.config({
  */
 export default defineConfig({
   testDir: './tests',
+  globalSetup: './tests/global.setup.ts',
   /* Run tests in files in parallel */
   fullyParallel: false,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -29,6 +30,11 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [['html', { open: 'always' }]],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
+  timeout: 90000,
+  expect: {
+    /* Maximum time expect() should wait for the condition to be met. */
+    timeout: 30000
+  },
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
     // baseURL: 'http://localhost:3000',
@@ -42,12 +48,7 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'Setup',
-      testMatch: 'global.setup.ts',
-    },  
-    {
       name: 'chromium',
-      dependencies: ['Setup'],
       use: { ...devices['Desktop Chrome'],
         storageState: 'auth/./auth.json'
       },
@@ -55,7 +56,6 @@ export default defineConfig({
 
     {
       name: 'firefox',
-      dependencies: ['Setup'],
       use: { ...devices['Desktop Firefox'],
        storageState: 'auth/./auth.json'
        },
@@ -63,7 +63,6 @@ export default defineConfig({
 
     {
       name: 'webkit',
-      dependencies: ['Setup'],
       use: { ...devices['Desktop Safari'],
         storageState: 'auth/./auth.json'
        },
