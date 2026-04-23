@@ -18,7 +18,7 @@ export class PIMPage {
         this.middleNameInput = page.getByRole('textbox', { name: 'Middle Name' });
         this.lastNameInput = page.getByRole('textbox', { name: 'Last Name' });
         this.saveButton = page.getByRole('button', { name: 'Save' });
-        this.newEmployeeNameHeading = page.getByRole('heading', { name: 'Employee Information' });  
+        this.newEmployeeNameHeading = page.locator('.orangehrm-edit-employee-name'); 
     }
 
     async addEmployee(firstName: string, middleName: string, lastName: string) {

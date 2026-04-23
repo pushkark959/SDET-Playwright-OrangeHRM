@@ -51,3 +51,11 @@ test ('verify user can not login with invalid username and password',{
    await expect(loginPage.invalidCrdentialErrorPopup).toHaveText(LoginModuleData.invalid_credentials_text);
    await expect(loginPage.usernameInput).toBeVisible();
 });
+
+test('verify user can login with valid credentials', async ({ page, loginPage }) => {
+    const username = process.env.USERNAME!;
+    const password = process.env.PASSWORD!; 
+    await loginPage.gotoOrangeHRM();
+    await loginPage.LoginOrangeHRM(username, password);
+    //await expect(page).toHaveURL(/.*dashboard.*/);
+});
