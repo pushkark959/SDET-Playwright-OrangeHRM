@@ -17,8 +17,8 @@ test('Verify new employee can be added successfully' , {
     , async ({ page, leftNavigationPage, pimPage, loginPage }) => {
 
 
-        //await loginPage.gotoOrangeHRM();
-        await loginPage.LoginOrangeHRM(process.env.USERNAME!, process.env.PASSWORD!);
+        await loginPage.gotoOrangeHRM();
+        //await loginPage.LoginOrangeHRM(process.env.USERNAME!, process.env.PASSWORD!);
         await leftNavigationPage.openPimModule();
         await pimPage.addEmployee(pimDate.first_name, pimDate.middle_name, pimDate.last_name);
         await expect(pimPage.newEmployeeNameHeading).toHaveText(`${pimDate.first_name}  ${pimDate.last_name}`);
